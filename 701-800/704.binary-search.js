@@ -10,14 +10,16 @@
  * @param {number} target
  * @return {number}
  */
-var search = function(nums, target) {
-    let lo = 0, hi = nums.length - 1;
+const search = function (nums, target) {
+    let lo = 0;
+    let hi = nums.length - 1;
 
     while (lo <= hi) {
+        // eslint-disable-next-line no-bitwise
         const mid = (lo + hi) >>> 1;
         if (nums[mid] < target) {
             lo = mid + 1;
-        } else if (nums[mid] == target) {
+        } else if (nums[mid] === target) {
             return mid;
         } else {
             hi = mid - 1;
@@ -27,4 +29,3 @@ var search = function(nums, target) {
     return -1;
 };
 // @lc code=end
-
