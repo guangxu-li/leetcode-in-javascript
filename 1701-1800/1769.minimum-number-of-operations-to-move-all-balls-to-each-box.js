@@ -17,21 +17,20 @@
  * @param {string} boxes
  * @return {number[]}
  */
-var minOperations = function(boxes) {
-    const moves = [];
-    for (let i = 0, ops = 0, balls = 0; i < boxes.length; i++) {
-        moves[i] += ops;
-        balls += boxes.charAt(i) - '0';
-        ops += balls;
-    }
+const minOperations = function (boxes) {
+  const moves = [];
+  for (let i = 0, ops = 0, balls = 0; i < boxes.length; i += 1) {
+    moves[i] += ops;
+    balls += boxes.charAt(i) - "0";
+    ops += balls;
+  }
 
-    for (let i = boxes.length - 1, ops = 0, balls = 0; i >= 0; i--) {
-        moves[i] += ops;
-        balls += boxes.charAt(i) - '0';
-        ops += balls;
-    }
+  for (let i = boxes.length - 1, ops = 0, balls = 0; i >= 0; i -= 1) {
+    moves[i] += ops;
+    balls += boxes.charAt(i) - "0";
+    ops += balls;
+  }
 
-    return moves;
+  return moves;
 };
 // @lc code=end
-

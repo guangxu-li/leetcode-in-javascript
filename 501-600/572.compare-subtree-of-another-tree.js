@@ -18,29 +18,28 @@
  * @param {TreeNode} t
  * @return {boolean}
  */
-var equal = function(s, t) {
-    if (!s && !t) {
-        return true;
-    }
+const equal = (s, t) => {
+  if (!s && !t) {
+    return true;
+  }
 
-    if (!s || !t) {
-        return false;
-    }
+  if (!s || !t) {
+    return false;
+  }
 
-    return s.val == t.val && equal(s.left, t.left) && equal(s.right, t.right);
-}
+  return s.val === t.val && equal(s.left, t.left) && equal(s.right, t.right);
+};
 
 /**
  * @param {TreeNode} s
  * @param {TreeNode} t
  * @return {boolean}
  */
-var isSubtree = function(s, t) {
-    if (!s) {
-        return !t;
-    }
+const isSubtree = function (s, t) {
+  if (!s) {
+    return !t;
+  }
 
-    return equal(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
+  return equal(s, t) || isSubtree(s.left, t) || isSubtree(s.right, t);
 };
 // @lc code=end
-

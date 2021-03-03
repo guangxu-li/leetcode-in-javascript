@@ -13,28 +13,28 @@
  * @return {number}
  */
 const maxArea = function (h, w, horizontalCuts, verticalCuts) {
-    const largestInterval = (arr, n) => {
-        let prev = 0;
-        let max = 0;
-        for (let i = 0; i < arr.length; i += 1) {
-            max = Math.max(max, arr[i] - prev);
-            prev = arr[i];
-        }
+  const largestInterval = (arr, n) => {
+    let prev = 0;
+    let max = 0;
+    for (let i = 0; i < arr.length; i += 1) {
+      max = Math.max(max, arr[i] - prev);
+      prev = arr[i];
+    }
 
-        return Math.max(max, n - prev);
-    };
+    return Math.max(max, n - prev);
+  };
 
-    const mod = 1e9 + 7;
-    return (
-        (largestInterval(
-            horizontalCuts.sort((a, b) => a - b),
-            h
-        ) *
-            largestInterval(
-                verticalCuts.sort((a, b) => a - b),
-                w
-            )) %
-        mod
-    );
+  const mod = 1e9 + 7;
+  return (
+    (largestInterval(
+      horizontalCuts.sort((a, b) => a - b),
+      h
+    ) *
+      largestInterval(
+        verticalCuts.sort((a, b) => a - b),
+        w
+      )) %
+    mod
+  );
 };
 // @lc code=end

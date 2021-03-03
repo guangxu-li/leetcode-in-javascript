@@ -17,30 +17,30 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var deepestLeavesSum = function (root) {
-    let deepest = 0, sum = 0;
+const deepestLeavesSum = function (root) {
+  let deepest = 0;
+  let sum = 0;
 
-    const traverse = (node, depth = 0) => {
-        if (!node) {
-            return;
-        }
-
-        if (!node.left && !node.right) {
-            if (deepest < depth) {
-                deepest = depth;
-                sum = node.val;
-            } else if (deepest == depth) {
-                sum += node.val;
-            }
-        } else {
-            traverse(node.left, depth + 1);
-            traverse(node.right, depth + 1);
-        }
+  const traverse = (node, depth = 0) => {
+    if (!node) {
+      return;
     }
 
-    traverse(root);
+    if (!node.left && !node.right) {
+      if (deepest < depth) {
+        deepest = depth;
+        sum = node.val;
+      } else if (deepest === depth) {
+        sum += node.val;
+      }
+    } else {
+      traverse(node.left, depth + 1);
+      traverse(node.right, depth + 1);
+    }
+  };
 
-    return sum;
+  traverse(root);
+
+  return sum;
 };
 // @lc code=end
-

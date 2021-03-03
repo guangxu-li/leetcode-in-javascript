@@ -13,42 +13,32 @@
  *     this.right = (right===undefined ? null : right)
  * }
  */
-
-/**
- * @param {TreeNode} root
- * @param {Map} sums
- * @param {Obj} max
- * @return {void}
- */
-var calculate = function (root, sums, max) {
-    if (!root) {
-        return 0;
-    }
-
-    const s = root.val + calculate(root.left, sums, max) + calculate(root.right, sums, max);
-    sums[s] = (sums[s] || 0) + 1;
-    max.val = Math.max(max.val, sums[s])
-
-    return s;
-}
-
 /**
  * @param {TreeNode} root
  * @return {number[]}
  */
-var findFrequentTreeSum = function (root) {
-    const max = { val: 0 };
-    const sums = [];
-    calculate(root, sums, max);
-
-    let nums = [];
-    for (const key in sums) {
-        if (sums[key] == max.val) {
-            nums.push(key);
-        }
+const findFrequentTreeSum = function (root) {
+  let max = 0;
+  const sums = [];
+  const calculate = (node) => {
+    if (!node) {
+      return 0;
     }
 
-    return nums;
+    const s = node.val + calculate(node.left, sums, max) + calculate(node.right, sums, max);
+    sums[s] = (sums[s] || 0) + 1;
+    max = Math.max(max, sums[s]);
+
+    return s;
+  };
+  calculate(root);
+
+  const nums = [];
+  Object.entries(sums).forEach(([key, val]) => {
+    if (val === max) {
+      nums.push(key);
+    }
+  });
+  return nums;
 };
 // @lc code=end
-

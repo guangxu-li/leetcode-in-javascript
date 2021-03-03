@@ -11,6 +11,6 @@
  * @return {boolean}
  */
 const isPowerOfThree = function (n) {
-    return new RegExp("^10*$", "gi").test(n.toString(3));
+  return new RegExp("^10*$", "gi").test(n.toString(3));
 };
 // @lc code=end

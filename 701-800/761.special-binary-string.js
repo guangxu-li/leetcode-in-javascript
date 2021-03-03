@@ -9,20 +9,19 @@
  * @param {string} S
  * @return {string}
  */
-var makeLargestSpecial = function(S) {
-    const largestSpecial = [];
-    for (let i = 0, anchor = 0, cnt = 0; i < S.length; i++) {
-        cnt += S.charAt(i) == '1' ? 1 : -1;
-        if (cnt == 0) {
-            largestSpecial.push('1' + makeLargestSpecial(S.substring(anchor + 1, i)) + '0');
-            anchor = i + 1;
-        }
+const makeLargestSpecial = function (S) {
+  const largestSpecial = [];
+  for (let i = 0, anchor = 0, cnt = 0; i < S.length; i += 1) {
+    cnt += S[i] === "1" ? 1 : -1;
+    if (cnt === 0) {
+      largestSpecial.push(`1${makeLargestSpecial(S.substring(anchor + 1, i))}0`);
+      anchor = i + 1;
     }
+  }
 
-    return largestSpecial.sort().reverse().join("");
+  return largestSpecial.sort().reverse().join("");
 };
 // @lc code=end
-
 
 // @after-stub-for-debug-begin
 module.exports = makeLargestSpecial;

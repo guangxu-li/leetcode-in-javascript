@@ -17,25 +17,26 @@
  * @param {TreeNode} root
  * @return {number}
  */
-var deepestLeavesSum = function (root) {
-    const nodes = [];
-    nodes.push(root);
-    let sum = 0;
+const deepestLeavesSum = function (root) {
+  const nodes = [];
+  nodes.push(root);
+  let sum = 0;
 
-    while (nodes.length) {
-        let size = nodes.length;
-        sum = 0;
+  while (nodes.length) {
+    let size = nodes.length;
+    sum = 0;
 
-        while (size--) {
-            const node = nodes.shift();
-            sum += node.val;
+    while (size) {
+      const node = nodes.shift();
+      sum += node.val;
 
-            if (node.left) nodes.push(node.left);
-            if (node.right) nodes.push(node.right);
-        }
+      if (node.left) nodes.push(node.left);
+      if (node.right) nodes.push(node.right);
+
+      size -= 1;
     }
+  }
 
-    return sum;
+  return sum;
 };
 // @lc code=end
-

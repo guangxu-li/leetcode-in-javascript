@@ -9,8 +9,8 @@
  * @param {number[]} nums
  */
 const Solution = function (nums) {
-    this.nums = nums;
-    this.original = [...nums];
+  this.nums = nums;
+  this.original = [...nums];
 };
 
 /**
@@ -18,8 +18,8 @@ const Solution = function (nums) {
  * @return {number[]}
  */
 Solution.prototype.reset = function () {
-    this.nums = [...this.original];
-    return this.nums;
+  this.nums = [...this.original];
+  return this.nums;
 };
 
 /**
@@ -27,15 +27,15 @@ Solution.prototype.reset = function () {
  * @return {number[]}
  */
 Solution.prototype.shuffle = function () {
-    const swap = (i, j) => {
-        [this.nums[i], this.nums[j]] = [this.nums[j], this.nums[i]];
-    };
+  const swap = (i, j) => {
+    [this.nums[i], this.nums[j]] = [this.nums[j], this.nums[i]];
+  };
 
-    for (let i = 0; i < this.nums.length; i += 1) {
-        swap(i, Math.floor(Math.random() * this.nums.length));
-    }
+  for (let i = 0; i < this.nums.length; i += 1) {
+    swap(i, Math.floor(Math.random() * this.nums.length));
+  }
 
-    return this.nums;
+  return this.nums;
 };
 
 /**

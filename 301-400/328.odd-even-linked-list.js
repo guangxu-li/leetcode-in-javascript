@@ -17,21 +17,21 @@
  * @return {ListNode}
  */
 const oddEvenList = function (head) {
-    if (!head || !head.next) {
-        return head;
-    }
-
-    let odd = head;
-    let even = head.next;
-    const part2 = even;
-    while (odd.next && even.next) {
-        odd.next = even.next;
-        odd = odd.next;
-        even.next = odd.next;
-        even = even.next;
-    }
-
-    odd.next = part2;
+  if (!head || !head.next) {
     return head;
+  }
+
+  let odd = head;
+  let even = head.next;
+  const part2 = even;
+  while (odd.next && even.next) {
+    odd.next = even.next;
+    odd = odd.next;
+    even.next = odd.next;
+    even = even.next;
+  }
+
+  odd.next = part2;
+  return head;
 };
 // @lc code=end

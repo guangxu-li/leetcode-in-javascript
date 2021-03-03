@@ -11,16 +11,16 @@
  * @return {number[]}
  */
 const anagramMappings = function (A, B) {
-    const mappings = [];
-    for (let i = 0; i < B.length; i += 1) {
-        mappings[B[i]] = i;
-    }
+  const mappings = [];
+  for (let i = 0; i < B.length; i += 1) {
+    mappings[B[i]] = i;
+  }
 
-    const map = [];
-    for (let i = 0; i < A.length; i += 1) {
-        map[i] = mappings[A[i]];
-    }
+  const map = [];
+  for (let i = 0; i < A.length; i += 1) {
+    map[i] = mappings[A[i]];
+  }
 
-    return map;
+  return map;
 };
 // @lc code=end

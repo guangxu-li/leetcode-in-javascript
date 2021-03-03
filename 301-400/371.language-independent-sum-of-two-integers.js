@@ -12,19 +12,19 @@
  * @return {number}
  */
 const getSum = function (a, b) {
-    let x = Math.abs(a);
-    let y = Math.abs(b);
-    if (x < y) {
-        return getSum(b, a);
-    }
+  let x = Math.abs(a);
+  let y = Math.abs(b);
+  if (x < y) {
+    return getSum(b, a);
+  }
 
-    const sign = a > 0 || -1;
-    const add = a * b >= 0;
+  const sign = a > 0 || -1;
+  const add = a * b >= 0;
 
-    while (y) {
-        [x, y] = [x ^ y, add ? (x & y) << 1 : (~x & y) << 1];
-    }
+  while (y) {
+    [x, y] = [x ^ y, add ? (x & y) << 1 : (~x & y) << 1];
+  }
 
-    return sign * x;
+  return sign * x;
 };
 // @lc code=end

@@ -18,18 +18,18 @@
  * @param {TreeNode} t
  * @return {boolean}
  */
-var preorder = function(s) {
-    if (!s) {
-        return null; 
-    }
+const preorder = (s) => {
+  if (!s) {
+    return null;
+  }
 
-    return "#" + s.val + preorder(s.left) + preorder(s.right);
-}
+  return `#${s.val}${preorder(s.left)}${preorder(s.right)}`;
+};
 
-var isSubtree = function(s, t) {
-    let ss = preorder(s), st = preorder(t);
+const isSubtree = function (s, t) {
+  const ss = preorder(s);
+  const st = preorder(t);
 
-    return ss.includes(st);
+  return ss.includes(st);
 };
 // @lc code=end
-

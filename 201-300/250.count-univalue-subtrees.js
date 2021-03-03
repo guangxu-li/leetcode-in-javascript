@@ -17,32 +17,30 @@
  * @param {TreeNode} root
  * @return {number}
  */
- var univalSubtrees = function(root) {
-    if (!root.left && !root.right) {
-        return 1;
+const countUnivalSubtrees = function (root) {
+  const univalSubtrees = (node) => {
+    if (!node.left && !node.right) {
+      return 1;
     }
 
-    let cnt = 0, left = 0, right = 0, flag = 1;
-    if (root.left) {
-        left = univalSubtrees(root.left);
-        flag &= left > 0 && root.val == root.left.val;
+    let cnt = 0;
+    let left = 0;
+    let right = 0;
+    let flag = 1;
+    if (node.left) {
+      left = univalSubtrees(node.left);
+      flag = left > 0 && node.val === node.left.val;
     }
 
-    if (root.right) {
-        right = univalSubtrees(root.right);
-        flag &= right > 0 && root.val == root.right.val;
+    if (node.right) {
+      right = univalSubtrees(node.right);
+      flag &= right > 0 && node.val === node.right.val;
     }
 
     cnt += Math.abs(left) + Math.abs(right);
     return flag ? 1 + cnt : -cnt;
- }
+  };
 
-/**
- * @param {TreeNode} root
- * @return {number}
- */
-var countUnivalSubtrees = function(root) {
-    return root && Math.abs(univalSubtrees(root));
+  return root && Math.abs(univalSubtrees(root));
 };
 // @lc code=end
-

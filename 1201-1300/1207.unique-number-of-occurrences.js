@@ -9,13 +9,12 @@
  * @param {number[]} arr
  * @return {boolean}
  */
-var uniqueOccurrences = function(arr) {
-    const cnts = new Map();
-    for (const val of arr) {
-        cnts.set(val, (cnts.get(val) || 0) + 1);
-    }
+const uniqueOccurrences = function (arr) {
+  const cnts = new Map();
+  for (const val of arr) {
+    cnts.set(val, (cnts.get(val) || 0) + 1);
+  }
 
-    return cnts.size == new Set(cnts.values()).size;
+  return cnts.size === new Set(cnts.values()).size;
 };
 // @lc code=end
-

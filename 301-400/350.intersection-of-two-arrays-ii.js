@@ -11,12 +11,12 @@
  * @return {number[]}
  */
 const intersect = function (nums1, nums2) {
-    const found = new Map();
-    nums1.forEach((val) => found.set(val, (found.get(val) || 0) + 1));
+  const found = new Map();
+  nums1.forEach((val) => found.set(val, (found.get(val) || 0) + 1));
 
-    return nums2.filter((val) => {
-        found.set(val, (found.get(val) || 0) - 1);
-        return found.get(val) >= 0;
-    });
+  return nums2.filter((val) => {
+    found.set(val, (found.get(val) || 0) - 1);
+    return found.get(val) >= 0;
+  });
 };
 // @lc code=end
