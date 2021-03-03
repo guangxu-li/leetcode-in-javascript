@@ -10,5 +10,12 @@
  * @param {number} b
  * @return {number}
  */
-const getSum = function (a, b) {};
+var getSum = function(a, b) {
+    while (b) {
+        [a, b] = [a ^ b, (a & b) << 1];
+    }
+
+    return a;
+};
 // @lc code=end
+
